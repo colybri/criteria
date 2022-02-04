@@ -1,0 +1,21 @@
+{
+  "name": "colybri/criteria",
+  "description": "Helper classes for implement filter/criteria pattern",
+  "authors": [
+    {
+      "name": "Mario J. López",
+      "email": "mrjqnlpzrz@gmail.com"
+    }
+  ],
+  "license": "MIT",
+  "type": "library",
+  "autoload": {
+    "psr-4": {
+      "Colybri\\Criteria\\": "src/"
+    }
+  },
+  "require": {
+    "php": "^8.1",
+    "doctrine/dbal": "3.*"
+  }
+}
