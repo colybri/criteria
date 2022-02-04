@@ -34,9 +34,13 @@ final class Order
     {
         return $this->orderType;
     }
+    public function orderTypeValue(): string
+    {
+        return $this->orderType()->value;
+    }
 
     public function serialize(): string
     {
-        return sprintf('%s.%s', $this->orderBy->value(), $this->orderType()->value);
+        return sprintf('%s.%s', $this->orderBy->value(), $this->orderTypeValue());
     }
 }

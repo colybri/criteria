@@ -34,7 +34,7 @@ class CriteriaDbalAdapter implements ConditionVisitor
         if ($criteria->hasOrder()) {
             $this->queryBuilder->orderBy(
                 $this->mapFieldValue($criteria->order()->orderBy()->value()),
-                $criteria->order()->orderType(),
+                $criteria->order()->orderTypeValue(),
             );
         }
 
