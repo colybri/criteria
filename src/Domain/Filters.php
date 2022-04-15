@@ -10,14 +10,14 @@ final class Filters implements \Countable, \IteratorAggregate
     {
     }
 
-    public function count()
+    public function count(): int
     {
         return count($this->filters());
     }
 
-    public function getIterator()
+    public function getIterator(): \Traversable
     {
-        return new \ArrayIterator($this->filters());
+        return new \ArrayObject($this->filters());
     }
 
     public static function from(Condition ...$filters): static
