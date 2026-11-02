@@ -4,8 +4,9 @@ declare(strict_types=1);
 
 namespace Colybri\Criteria\Infrastructure\Adapter\Dbal;
 
+use Doctrine\DBAL\ArrayParameterType;
+use Doctrine\DBAL\ParameterType;
 use Doctrine\DBAL\Query\QueryBuilder;
-use Doctrine\DBAL\Connection;
 use Colybri\Criteria\Domain\Conjunction;
 use Colybri\Criteria\Domain\Disjunction;
 use Colybri\Criteria\Domain\Filter;
@@ -98,13 +99,16 @@ class CriteriaDbalAdapter implements ConditionVisitor
         return $filter->accept($this);
     }
 
-    private function mapType(Filter $filter): ?int
+    /**
+     * DBAL 3.6+ exposes these as int constants, DBAL 4 as enum cases.
+     */
+    private function mapType(Filter $filter): ArrayParameterType|ParameterType|int
     {
         if (\in_array($filter->operator(), [FilterOperator::In, FilterOperator::NotIn])) {
-            return Connection::PARAM_STR_ARRAY;
+            return ArrayParameterType::STRING;
         }
 
-        return null;
+        return ParameterType::STRING;
     }
 
     private function mapOperator(Filter $filter): string

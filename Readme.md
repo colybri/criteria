@@ -28,6 +28,8 @@ Via Composer
 $ composer require colybri/criteria
 ```
 
+Requires PHP 8.1+ and `doctrine/dbal` 3.6+ or 4.x.
+
 ## Usage
 
 ### Create a criteria
